@@ -52,4 +52,19 @@ extension HomePageVC: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contact = contactsList[indexPath.row]
+        performSegue(withIdentifier: "toPersonDetail", sender: contact)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPersonDetail" {
+            if let contactSender = sender as? Contact{
+                let destinationVC = segue.destination as! PersonDetailVC
+                destinationVC.contactDetail = contactSender
+            }
+        }
+    }
 }

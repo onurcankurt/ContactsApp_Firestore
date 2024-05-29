@@ -17,6 +17,11 @@
 		779B1F862C073BF600117C6E /* PersonDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B1F852C073BF600117C6E /* PersonDetailVC.swift */; };
 		779B1F882C073C2500117C6E /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B1F872C073C2500117C6E /* ContactCell.swift */; };
 		779B1F8A2C073C3400117C6E /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B1F892C073C3400117C6E /* Contact.swift */; };
+		779B1F932C0743D500117C6E /* PersonDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B1F922C0743D500117C6E /* PersonDetailVM.swift */; };
+		779B1F952C0743E200117C6E /* AddPersonVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B1F942C0743E200117C6E /* AddPersonVM.swift */; };
+		779B1F972C0743F100117C6E /* HomePageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B1F962C0743F100117C6E /* HomePageVM.swift */; };
+		779B1F992C07440C00117C6E /* ContactsDaoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B1F982C07440C00117C6E /* ContactsDaoRepository.swift */; };
+		779B1FA82C07448E00117C6E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 779B1FA72C07448E00117C6E /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,10 @@
 		779B1F852C073BF600117C6E /* PersonDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailVC.swift; sourceTree = "<group>"; };
 		779B1F872C073C2500117C6E /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		779B1F892C073C3400117C6E /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		779B1F922C0743D500117C6E /* PersonDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailVM.swift; sourceTree = "<group>"; };
+		779B1F942C0743E200117C6E /* AddPersonVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPersonVM.swift; sourceTree = "<group>"; };
+		779B1F962C0743F100117C6E /* HomePageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageVM.swift; sourceTree = "<group>"; };
+		779B1F982C07440C00117C6E /* ContactsDaoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDaoRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				779B1FA82C07448E00117C6E /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +126,9 @@
 		779B1F8F2C073CD200117C6E /* viewmodels */ = {
 			isa = PBXGroup;
 			children = (
+				779B1F962C0743F100117C6E /* HomePageVM.swift */,
+				779B1F942C0743E200117C6E /* AddPersonVM.swift */,
+				779B1F922C0743D500117C6E /* PersonDetailVM.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -131,6 +144,7 @@
 		779B1F912C073CE400117C6E /* repo */ = {
 			isa = PBXGroup;
 			children = (
+				779B1F982C07440C00117C6E /* ContactsDaoRepository.swift */,
 			);
 			path = repo;
 			sourceTree = "<group>";
@@ -151,6 +165,9 @@
 			dependencies = (
 			);
 			name = ContactsApp_Firestore;
+			packageProductDependencies = (
+				779B1FA72C07448E00117C6E /* RxSwift */,
+			);
 			productName = ContactsApp_Firestore;
 			productReference = 779B1F6C2C07396700117C6E /* ContactsApp_Firestore.app */;
 			productType = "com.apple.product-type.application";
@@ -179,6 +196,9 @@
 				Base,
 			);
 			mainGroup = 779B1F632C07396700117C6E;
+			packageReferences = (
+				779B1F9A2C07448E00117C6E /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 779B1F6D2C07396700117C6E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -206,10 +226,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				779B1F972C0743F100117C6E /* HomePageVM.swift in Sources */,
+				779B1F992C07440C00117C6E /* ContactsDaoRepository.swift in Sources */,
 				779B1F882C073C2500117C6E /* ContactCell.swift in Sources */,
 				779B1F862C073BF600117C6E /* PersonDetailVC.swift in Sources */,
 				779B1F742C07396700117C6E /* HomePageVC.swift in Sources */,
 				779B1F842C073BE500117C6E /* AddPersonVC.swift in Sources */,
+				779B1F932C0743D500117C6E /* PersonDetailVM.swift in Sources */,
+				779B1F952C0743E200117C6E /* AddPersonVM.swift in Sources */,
 				779B1F702C07396700117C6E /* AppDelegate.swift in Sources */,
 				779B1F722C07396700117C6E /* SceneDelegate.swift in Sources */,
 				779B1F8A2C073C3400117C6E /* Contact.swift in Sources */,
@@ -435,6 +459,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		779B1F9A2C07448E00117C6E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		779B1FA72C07448E00117C6E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 779B1F9A2C07448E00117C6E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 779B1F642C07396700117C6E /* Project object */;
 }

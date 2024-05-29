@@ -13,6 +13,7 @@ class HomePageVC: UIViewController {
     @IBOutlet weak var contactsTableView: UITableView!
     
     var contactsList = [Contact]()
+    var viewModel = HomePageVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,19 +22,16 @@ class HomePageVC: UIViewController {
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
         
-        let c1 = Contact(id: "1", name: "John", phone: "1111")
-        let c2 = Contact(id: "2", name: "Rick", phone: "2222")
-        let c3 = Contact(id: "3", name: "James", phone: "3333")
-        
-        contactsList.append(c1)
-        contactsList.append(c2)
-        contactsList.append(c3)
+        _ = viewModel.contactsRXList.subscribe(onNext: { contacts in
+            self.contactsList = contacts
+            self.contactsTableView.reloadData()
+        })
     }
 }
 
 extension HomePageVC: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("Arama: \(searchText)")
+        viewModel.search(searchText: searchText)
     }
     
 }
@@ -66,5 +64,20 @@ extension HomePageVC: UITableViewDelegate, UITableViewDataSource {
                 destinationVC.contactDetail = contactSender
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let contact = contactsList[indexPath.row]
+        let deleteSwipe = UIContextualAction(style: .destructive, title: "Delete") { contextualAction, view, bool in
+            let deleteAlertController = UIAlertController(title: "Delete", message: "Do you want to delete \(contact.name!)?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let yesAction = UIAlertAction(title: "Yes", style: .destructive) { alert in
+                self.viewModel.delete(id: contact.id!)
+            }
+            deleteAlertController.addAction(cancelAction)
+            deleteAlertController.addAction(yesAction)
+            self.present(deleteAlertController, animated: true)
+        }
+        return UISwipeActionsConfiguration(actions: [deleteSwipe])
     }
 }

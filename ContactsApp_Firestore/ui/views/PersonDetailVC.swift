@@ -13,6 +13,7 @@ class PersonDetailVC: UIViewController {
     @IBOutlet weak var phoneTextField: UITextField!
     
     var contactDetail: Contact?
+    var viewModel = PersonDetailVM()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class PersonDetailVC: UIViewController {
     
     @IBAction func updateButton(_ sender: Any) {
         if let id = contactDetail?.id, let name = nameTextField.text, let phone = phoneTextField.text{
-            print("\(id)-\(name)-\(phone) updated.")
+            viewModel.update(id: id, name: name, phone: phone)
         }
     }
 }

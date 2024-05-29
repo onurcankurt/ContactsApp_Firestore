@@ -11,7 +11,7 @@
         <!--Contacts-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ContactsApp_Firestore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomePageVC" customModule="ContactsApp_Firestore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="200" width="414" height="662"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contactCell" id="J1F-Wj-cuK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contactCell" id="J1F-Wj-cuK" customClass="ContactCell" customModule="ContactsApp_Firestore" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="414" height="102.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J1F-Wj-cuK" id="anj-Th-M5W">
@@ -95,7 +95,7 @@
         <!--Add Person-->
         <scene sceneID="u2S-vM-FDQ">
             <objects>
-                <viewController id="gpi-UO-caf" sceneMemberID="viewController">
+                <viewController id="gpi-UO-caf" customClass="AddPersonVC" customModule="ContactsApp_Firestore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Dp-rh-KNl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,7 +140,7 @@
         <!--Person Detail-->
         <scene sceneID="5R8-Gs-Fgf">
             <objects>
-                <viewController id="5GF-hZ-P8Z" sceneMemberID="viewController">
+                <viewController id="5GF-hZ-P8Z" customClass="PersonDetailVC" customModule="ContactsApp_Firestore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jXp-rm-9DE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

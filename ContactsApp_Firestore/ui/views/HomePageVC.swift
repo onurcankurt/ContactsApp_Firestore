@@ -31,9 +31,12 @@ class HomePageVC: UIViewController {
 
 extension HomePageVC: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.search(searchText: searchText)
+        if searchText == ""{
+            viewModel.uploadContacts()
+        }else {
+            viewModel.search(searchText: searchText)
+        }
     }
-    
 }
 
 extension HomePageVC: UITableViewDelegate, UITableViewDataSource {

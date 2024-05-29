@@ -7,38 +7,62 @@
 
 import Foundation
 import RxSwift
+import FirebaseFirestore
 
 class ContactsDaoRepository {
     var contactRXList = BehaviorSubject<[Contact]>(value: [Contact]())
+    var collectionContacts = Firestore.firestore().collection("Contacts")
     
     func save(name: String, phone:String){
-        print("\(name)-\(phone) saved.")
+        let contact = ["name": name, "phone": phone]
+        collectionContacts.document().setData(contact)
     }
     
     func update(id: String, name: String, phone: String){
-        print("\(id)-\(name)-\(phone) updated.")
+        let contact = ["name": name, "phone": phone]
+        collectionContacts.document(id).updateData(contact)
     }
     
     func delete(id: String){
-        print("ID: \(id) contact deleted.")
+        collectionContacts.document(id).delete()
     }
     
     func search(searchText: String){
-        print("Arama: \(searchText)")
+        collectionContacts.addSnapshotListener { snapshot, error in
+            var list = [Contact]()
+            if let documents = snapshot?.documents{
+                for document in documents{
+                    let data = document.data()
+                    let id = document.documentID
+                    let name = data["name"] as? String ?? ""
+                    let phone = data["phone"] as? String ?? ""
+                    
+                    if name.lowercased().contains(searchText.lowercased()){
+                        let contact = Contact(id: id, name: name, phone: phone)
+                        list.append(contact)
+                    }
+                }
+            }
+            self.contactRXList.onNext(list)
+        }
     }
     
     
     func uploadContacts(){
-        var list = [Contact]()
-        
-        let c1 = Contact(id: "1", name: "John", phone: "1111")
-        let c2 = Contact(id: "2", name: "Rick", phone: "2222")
-        let c3 = Contact(id: "3", name: "James", phone: "3333")
-        
-        list.append(c1)
-        list.append(c2)
-        list.append(c3)
-        
-        contactRXList.onNext(list)
+        collectionContacts.addSnapshotListener { snapshot, error in
+            var list = [Contact]()
+            if let documents = snapshot?.documents{
+                for document in documents{
+                    let data = document.data()
+                    let id = document.documentID
+                    let name = data["name"] as? String ?? ""
+                    let phone = data["phone"] as? String ?? ""
+                    
+                    let contact = Contact(id: id, name: name, phone: phone)
+                    list.append(contact)
+                }
+            }
+            self.contactRXList.onNext(list)
+        }
     }
 }

@@ -19,9 +19,6 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="L2x-Cr-eCV">
                                 <rect key="frame" x="0.0" y="144" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HxG-7H-wHj"/>
-                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vi0-18-7Me">
                                 <rect key="frame" x="0.0" y="200" width="414" height="662"/>
@@ -61,6 +58,10 @@
                                                 <constraint firstItem="gMo-HB-xK3" firstAttribute="top" secondItem="anj-Th-M5W" secondAttribute="top" constant="16" id="wr3-1q-Arf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="8zO-VA-9fq" id="DxR-DT-saJ"/>
+                                            <outlet property="phoneLabel" destination="FvT-FN-UQn" id="KgP-bw-Mfh"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -85,6 +86,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="contactsTableView" destination="vi0-18-7Me" id="CdM-Wb-k7W"/>
+                        <outlet property="searchBar" destination="L2x-Cr-eCV" id="sCP-LG-w0N"/>
                         <segue destination="5GF-hZ-P8Z" kind="show" identifier="toPersonDetail" id="CMi-WD-TWs"/>
                     </connections>
                 </viewController>
@@ -116,6 +119,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveButton:" destination="gpi-UO-caf" eventType="touchUpInside" id="YGj-gb-MSc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9t4-81-odw"/>
@@ -132,6 +138,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Person" id="Eq0-0D-1kF"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="54F-Jv-RS8" id="3Y6-Cf-3g7"/>
+                        <outlet property="phoneTextField" destination="No6-Lo-gdT" id="j62-29-K59"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVq-Fq-qXi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -156,11 +166,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8v-3d-tId">
-                                <rect key="frame" x="161.5" y="385" width="91" height="49"/>
+                                <rect key="frame" x="145.5" y="385" width="123" height="49"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Save">
+                                <buttonConfiguration key="configuration" style="filled" title="Update">
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="updateButton:" destination="5GF-hZ-P8Z" eventType="touchUpInside" id="kjD-Qd-V3s"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HVX-yj-fYD"/>
@@ -177,6 +190,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Person Detail" id="cns-iJ-Hjz"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="4Zk-65-hJp" id="bUQ-dl-dAX"/>
+                        <outlet property="phoneTextField" destination="PVW-Dl-Vaz" id="KOR-HT-igr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fIy-1m-NpN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
